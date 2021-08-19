@@ -1,0 +1,1 @@
+web: gunicorn EmailVerification.wsgi --log-file -
