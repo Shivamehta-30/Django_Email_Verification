@@ -1,1 +1,1 @@
-web: gunicorn EmailVerification.wsgi --log-file -
+web: gunicorn EmailVerification.wsgi
