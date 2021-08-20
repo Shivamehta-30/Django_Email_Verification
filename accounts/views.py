@@ -1,3 +1,4 @@
+
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from .models import *
@@ -104,7 +105,13 @@ def error_page(request):
 
 def send_mail_after_registration(email, token):
     subject = 'Your accounts need to be verified'
-    message = f'Welcome User Please Click the link to verify your account http://127.0.0.1:8000//verify/{token}'
+    message = f'Welcome User Please Click the link to verify your account http://127.0.0.1:8000/verify/{token}'
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [email]
     send_mail(subject, message, email_from, recipient_list)
+
+def user_count(request):
+     no_user = Profile.objects.count()
+     return render(request, "dashboard.html", {
+            "no_user": no_user
+     })
